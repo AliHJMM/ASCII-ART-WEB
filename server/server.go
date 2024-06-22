@@ -2,6 +2,34 @@ package server
 
 
 
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "GET" {
+		renderErrorPage(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	if r.URL.Path == "/" {
+		tmpl, err := template.ParseFiles("./statics/index.html")
+		if err != nil {
+			renderErrorPage(w, "internal server error", http.StatusInternalServerError)
+			return
+		}
+		err = tmpl.Execute(w, map[string]string{"OutputText": ""})
+		if err != nil {
+			renderErrorPage(w, "internal server error", http.StatusInternalServerError)
+			return
+		}
+		return
+	}
+	if r.URL.Path == "/style.css" {
+		w.Header().Set("Content-Type", "text/css")
+		http.ServeFile(w, r, "./statics/style.css")
+		return
+	}
+	renderErrorPage(w, "Not found", http.StatusNotFound)
+}
+
+
 
 func Submit(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/ascii-art" {
