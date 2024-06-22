@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii Art</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="mainHeader">Enter Text</h2>
+        <form  method="POST" action="/ascii-art"  >
+            <textarea  rows="7" cols="80" id="text" name="text" required></textarea>
+            <br>
+            <h2>Banner Options</h2>
+            <label>
+                 <input type="radio" name="format" value="standard" required> Standard
+            </label><br>
+            <label>
+                 <input type="radio" name="format" value="shadow" required> Shadow
+            </label><br>
+            <label>
+                 <input type="radio" name="format" value="thinkertoy" required> Thinkertoy
+            </label><br>
+            <input type="submit" value="Submit" id="submit-btn" >
+
+        </form>
+        
+        <h2>Output</h2>
+        <textarea id="outputTextArea" rows="20" cols="80" readonly>{{.OutputText}}</textarea>
+        
+        
+        
+        <br>
+    </div>
+    
+</body>
+</html>
