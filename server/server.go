@@ -41,6 +41,13 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./statics/style.css")
 		return
 	}
+
+	if r.URL.Path == "/error.css" {
+		w.Header().Set("Content-Type", "text/css")
+		http.ServeFile(w, r, "./statics/error.css")
+		return
+	}
+
 	renderErrorPage(w, "Not found", http.StatusNotFound)
 }
 
