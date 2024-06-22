@@ -1,6 +1,15 @@
 package server
 
 
+import (
+	"html/template"
+	"net/http"
+	"strconv"
+
+	asciiart "ascii-web/ascii-art"
+)
+
+
 type PageData struct {
 	OutputText   string
 	ErrorMessage string
