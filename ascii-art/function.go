@@ -36,3 +36,12 @@ func Ascii(txt, format string) (string, error) {
 	return str, nil
 }
 
+func charValidation(str string) bool {
+	slice := []rune(str)
+	for _, char := range slice {
+		if (char < 32 || char > 126) && char != '\n' {
+			return false
+		}
+	}
+	return true
+}
