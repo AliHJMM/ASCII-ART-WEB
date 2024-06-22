@@ -1,6 +1,12 @@
 package server
 
 
+type PageData struct {
+	OutputText   string
+	ErrorMessage string
+	StatusCode   string
+}
+
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
